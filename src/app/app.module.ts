@@ -13,7 +13,6 @@ import { Content1Component } from './content1/content1.component';
 import { Content2Component } from './content2/content2.component';
 import { Content3Component } from './content3/content3.component';
 import { Content4Component } from './content4/content4.component';
-import { Content5Component } from './content5/content5.component';
 import { ChatComponent } from './chat/chat.component';
 import { FormsModule } from '@angular/forms';
 
@@ -24,14 +23,13 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FooterComponent,
     FeaturesComponent,
-    FAQsComponent,
-    ContactUsComponent,
-    CareersComponent,
     Content1Component,
     Content2Component,
     Content3Component,
     Content4Component,
-    Content5Component,
+    FAQsComponent,
+    ContactUsComponent,
+    CareersComponent,
     ChatComponent
   ],
   imports: [BrowserModule, AppRoutingModule,FormsModule],
