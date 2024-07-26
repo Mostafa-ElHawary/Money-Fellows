@@ -1,0 +1,6 @@
+.nav-sticky {
+    background: #fff;
+    box-shadow: 0 0 3px rgba(60, 72, 88, .15);
+    position: fixed;
+    z-index: 999;
+}
