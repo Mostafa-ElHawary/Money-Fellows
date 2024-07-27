@@ -29,6 +29,59 @@
   </div>
 </nav> -->
 
+<!-- <nav
+  class="w-full sticky top-0 z-[999] bg-white shadow-md py-4 px-5 animate-fadeIn"
+>
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex-shrink-0 animate-slideInLeft">
+      <img [src]="imgSrc" alt="Logo" class="h-10 w-40 object-contain" />
+    </div>
+    <ul class="hidden lg:flex space-x-8 animate-slideInDown">
+      <li
+        *ngFor="let item of nav"
+        class="text-gray-700 font-medium hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+      >
+        {{ item }}
+      </li>
+    </ul>
+    <div class="flex items-center space-x-4 animate-slideInRight">
+      <span
+        class="hidden sm:flex items-center text-gray-600 hover:text-blue-500 transition-colors duration-300"
+      >
+        <i class="fas fa-phone text-lg"></i>
+        <p class="ml-2 font-medium">12893</p>
+      </span>
+      <span
+        class="hidden sm:flex items-center text-gray-600 hover:text-blue-500 transition-colors duration-300"
+      >
+        <i class="fas fa-globe text-lg"></i>
+        <p class="ml-2 font-medium">AR</p>
+      </span>
+
+      <button
+       
+        id="navToggle"
+        class="lg:hidden text-gray-600 hover:text-blue-500 transition-colors duration-300 focus:outline-none"
+      >
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+
+      <ul
+        id="sidebar"
+        class="sidebar flex flex-col lg:hidden h-auto absolute top-20 left-0 w-full bg-green-500 m-auto z-[990] transition-all duration-300"
+      >
+        <li
+          *ngFor="let item of nav"
+          class="flex justify-center text-gray-700 pt-3 pb-3 font-medium hover:text-blue-500 transition-colors duration-300 cursor-pointer"
+        >
+          {{ item }}
+        </li>
+      </ul>
+   
+    </div>
+  </div>
+</nav> -->
+
 <nav
   class="w-full sticky top-0 z-[999] bg-white shadow-md py-4 px-5 animate-fadeIn"
 >
@@ -58,23 +111,37 @@
         <p class="ml-2 font-medium">AR</p>
       </span>
       <button
-        id="navToggle"
+        (click)="toggleNav()"
         class="lg:hidden text-gray-600 hover:text-blue-500 transition-colors duration-300 focus:outline-none"
+        [class.active]="isNavOpen"
       >
-        <i class="fas fa-bars text-2xl"></i>
+        <i
+          class="fas transition-transform duration-300 ease-in-out"
+          [class.fa-bars]="!isNavOpen"
+          [class.fa-times]="isNavOpen"
+          [class.rotate-90]="isNavOpen"
+        ></i>
       </button>
-      <ul
-        id="toggle-nav"
-        class="flex flex-col overflow-hidden h-0 absolute top-20 left-0 w-full bg-green-200 m-auto z-[990] transition-all duration-300"
-      >
-        <li
-          *ngFor="let item of nav"
-          class="flex justify-center text-gray-700 pt-3 pb-3 font-medium hover:text-blue-500 transition-colors duration-300 cursor-pointer"
-        >
-          {{ item }}
-        </li>
-      </ul>
     </div>
   </div>
-  
+
+  <ul
+    class="lg:hidden flex flex-col w-full py-3 bg-slate-50 absolute left-0 right-0 top-20 transition-all duration-300 ease-in-out overflow-hidden"
+    [class.max-h-0]="!isNavOpen"
+    [class.max-h-[500px]]="isNavOpen"
+    [class.opacity-0]="!isNavOpen"
+    [class.opacity-100]="isNavOpen"
+    [class.invisible]="!isNavOpen"
+    [class.visible]="isNavOpen"
+  >
+    <li
+      *ngFor="let item of nav; let i = index"
+      class="flex justify-center text-gray-700 py-3 font-medium hover:text-blue-500 transition-all duration-300 cursor-pointer"
+      [style.transform]="isNavOpen ? 'translateY(0)' : 'translateY(-100%)'"
+      [style.opacity]="isNavOpen ? '1' : '0'"
+      [style.transition-delay]="i * 50 + 'ms'"
+    >
+      {{ item }}
+    </li>
+  </ul>
 </nav>
